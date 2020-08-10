@@ -13,6 +13,20 @@ const NationalCard =(props)=> {
                 <p>Year: {data_year}</p>
                 <p>How many: {value}</p>               
             </div>
+
+            // <table style ={{width: 100+'%'}}>
+            //     <tr>
+            //         <th>Race</th>
+            //         <th>Count</th>
+            //         <th>Year</th>
+
+            // </tr>
+            //     <tr>
+            //     <td>{key}</td>
+            //     <td>{value}</td>
+            //     <td>{data_year}</td>
+            // </tr>
+            // </table>
             
         )
         

@@ -57,9 +57,9 @@ export class DropdownSearch extends Component {
              Motor Vehicle-Theft
             </option>
             <option
-              id="Homicide"
+              id="homicide"
               name="search"
-              value="Homicide"
+              value="homicide"
             >
               Homicide
             </option>

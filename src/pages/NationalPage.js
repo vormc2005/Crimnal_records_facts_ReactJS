@@ -33,7 +33,7 @@ export class NationalPage extends Component {
           
       this.setState({loading:true})
       
-        const res = await axios (`https://api.usa.gov/crime/fbi/sapi/api/nibrs/${crimeType}/offender/states/VA/race?API_KEY=${process.env.REACT_APP_APIKEY}`);
+        const res = await axios (`https://api.usa.gov/crime/fbi/sapi/api/nibrs/${crimeType}/offender/national/race?API_KEY=${process.env.REACT_APP_APIKEY}`);
         // console.log(res.data.data)
         // console.log(res.data.keys)
         this.setState({nationalData: res.data.data, loading:false})
