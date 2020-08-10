@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class NationalCard extends Component {
-   
-    render() {
+const NationalCard =(props)=> {    
 
-        const {key, data_year, value} = this.props.crimeReport;
+    const {key, data_year, value} = props.crimeReport;
 
         return (
             <div className="card text-center">
@@ -14,7 +12,7 @@ export class NationalCard extends Component {
                 <p>How many: {value}</p>               
             </div>
         )
-    }
+    
 }
 
 export default NationalCard
