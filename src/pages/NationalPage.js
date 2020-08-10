@@ -1,37 +1,71 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Nationalinfo from '../appcomponents/Nationalinfo'
+import DropdownSearch from '../layout/dropdownSearch/DropdownSearch'
 import axios from 'axios';
 
 export class NationalPage extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            nationalData: [],
+            loading: false,
+               
+          }
 
+        //   this.handleInputChange=this.handleInputChange.bind(this);
+        //   this.handlesubmit = this.handlesubmit.bind(this)
+    }
 
     //getting national data from API
-    state = {
-        nationalData: [],
-        loading: false
+    
+    
+      
+      //Need to get drop down to work!!!!************************************
+      componentDidMount(){
+          
+        this.getCrimeFromAPI('larceny')
+       
         
       }
-    
-      async componentDidMount(){
-        this.setState({loading:true})
-        const APIKey = 'bUyTG0hGrUKuyuaIVeB6pbzvYXCFrbrzImvHr8D8'
-        const res = await axios (`https://api.usa.gov/crime/fbi/sapi/api/nibrs/larceny/offender/states/VA/race?API_KEY=${APIKey}`);
-        console.log(res.data.data)
-        console.log(res.data.keys)
+      //******************************************************************* */
+      //Making Api Call got pull national data
+      async getCrimeFromAPI(crimeType){
+          
+      this.setState({loading:true})
+      
+        const res = await axios (`https://api.usa.gov/crime/fbi/sapi/api/nibrs/${crimeType}/offender/states/VA/race?API_KEY=${process.env.REACT_APP_APIKEY}`);
+        // console.log(res.data.data)
+        // console.log(res.data.keys)
         this.setState({nationalData: res.data.data, loading:false})
-        //Checking if data is in state
+    //Checking if data is in state
         console.log(this.state)
-        // console.log(this.state.loading)
+        // console.log(this.state.loading)        
+        
       }
+   
+//connecting to a Dropdown component, passing props up
+    searchCrimes= (search)=>{
+        // console.log(search)      
+        this.getCrimeFromAPI(search)
+        this.setState({ nationalData: []})
+    }
+
+   //Need to filter by year and race
 
 
 
     render() {
         return (
-            <div className="container">
-                National card works
-               <Nationalinfo loading={this.state.loading} nationalData={this.state.nationalData} />
-            </div>
+            <Fragment>
+                    <div className="container">
+
+                        
+
+                        <DropdownSearch searchCrimes = {this.searchCrimes}/>            
+               
+                        <Nationalinfo loading={this.state.loading} nationalData={this.state.nationalData} />
+                    </div>
+            </Fragment>
         )
     }
 }
