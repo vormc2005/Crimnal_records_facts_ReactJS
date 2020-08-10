@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import Navigationbar from './layout/navbar/Navigationbar'
+import NationalPage from './pages/NationalPage'
+import StatePage from './pages/StatePage'
+
 import './App.css';
 
-function App() {
+class App extends Component {
+
+  render(){
+
+  const pageName = 'APP Page'
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App '>
+      <Navigationbar />
+
+      <h1>{pageName}</h1>
+
+      <NationalPage/>
+      <StatePage />
+    
+
     </div>
   );
+  }
 }
 
 export default App;
